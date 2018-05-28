@@ -42,7 +42,7 @@ tmp = sum(- y' .* log(sigmoid(theta' * X'))) - sum((1 - y') .* log(1 .- sigmoid(
 
 tmp_1 = 0;
 if length(theta) >= 2
-	tmp_1 = sum(theta(2:length(theta)).^2);
+	tmp_1 = sum(theta(2:end).^2);
 endif
 
 J = (1 / m) * tmp + (lambda / (2 * m)) * tmp_1;
@@ -56,7 +56,7 @@ grad(1, 1) = (1 / m) * tmp;
 tmp_1 = 0;
 if length(theta) >= 2
 	tmp = (sigmoid(theta' * X') - y') * X;
-	grad(2:length(grad)) = ((1 / m) * tmp(2:length(tmp))) + (lambda / m) .* (theta(2:length(theta)))';
+	grad(2:end) = ((1 / m) * tmp(2:end)) + (lambda / m) .* (theta(2:end))';
 endif
 
 % =============================================================
